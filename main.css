@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+	background: url(images/cutting-board2.jpeg) no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+}
+
+header {
+	background-color: #262626;
+	opacity: .9;
+	color: white;
+	font-size: 20px ;
+	margin: 0px;
+}
+
+.hidden {
+	display: none;
+}
+
+h1 {
+	margin: 0px;
+	padding: 15px;
+}
+
+.search-description {
+	font-size: 26px;
+	margin-top: 15%;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	line-height: 150%;
+}
+
+form {
+	font-size: 22px;
+}
+
+.search-text {
+	padding: 5px;
+	margin: 5px;
+}
+
+.search-button {
+	background-color: #EAEEEF;
+	margin: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.search-button:hover {
+	background-color: #757777;
+}
+
+.search-again {
+	font-size: 22px;
+}
+
+
+.recipe-results, .playlist-results {
+	margin: 5%;
+	display: inline-block;
+	background-color: #EAEEEF;
+	opacity: .7;
+	width: 35%;
+}
+
+h3 {
+}
+
+
