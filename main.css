@@ -63,15 +63,13 @@ form {
 }
 
 
-.recipe-results, .playlist-results {
-	margin: 5%;
+.recipe-section, .playlist-section {
+	margin: 4%;
 	display: inline-block;
 	background-color: #EAEEEF;
-	opacity: .7;
-	width: 35%;
+	opacity: .9;
+	width: 40%;
 }
 
-h3 {
-}
 
 

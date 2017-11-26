@@ -19,23 +19,29 @@
 	</header>
 	<main>
 		<!-- Welcome Page -->
-		<div class="welcome-page hidden">
+		<div class="welcome-page">
 			<h2 class="search-description">Search a holiday, theme, or event, and we’ll find you the best recipes to make while listening to the perfect tunes.</h2>
-			<form>
-				<input type="text" name="search-term" class="search-text" placeholder="i.e. Halloween" required>
-				<input type="submit" class="search-button" value="Search">
+			<form action="#">
+				<input type="text" id="js-query" name="search-term" class="search-text" placeholder="i.e. Halloween" required>
+				<button type="submit" class="search-button">Search</button>
 			</form>
 		</div>
 
 		<!-- Search Results -->
-		<div class="search-results">
+		<div class="search-results hidden">
 			<!-- Start a new search 
 			<button class="search-again">Start Over</button> -->
-			<div class="recipe-results">
+			<div class="recipe-section">
 				<h3>Recipes</h3>
+				<!-- Recipe results from Edamam API rendered in JS file -->
+				<div class="js-recipe-results">
+				</div>
 			</div>
-			<div class="playlist-results">
+			<div class="playlist-section">
 				<h3>Playlists</h3>
+				<!-- Playlist results from Spotify API rendered in JS file -->
+				<div class="js-playlist-results">
+				</div>
 			</div>
 			
 		</div>
@@ -45,6 +51,7 @@
 			
 		</div>
 	</main>
-
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script type="text/javascript" src="app.js"></script>
 </body>
 </html>
