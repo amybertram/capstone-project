@@ -55,21 +55,49 @@ form {
 }
 
 .search-button:hover {
-	background-color: #757777;
+	box-shadow: 3px 3px 10px #262626;
 }
 
 .search-again {
 	font-size: 22px;
 }
 
+h3 {
+	padding: 15px;
+	margin: auto;
+	background-color: #67b2ef;
+	font-size: 22px;
+}
 
 .recipe-section, .playlist-section {
-	margin: 4%;
+	margin-top: 7%;
 	display: inline-block;
 	background-color: #EAEEEF;
 	opacity: .9;
-	width: 40%;
+	height: 600px;
+	width: 100%;
 }
 
+.js-recipe-results, .js-playlist-results {
+	height: 90%;
+	overflow: auto;
+}
 
+.js-recipe-selection, .js-music-selection {
+	max-height: 250px;
+	padding: 5px;
+}
+
+.recipe-result, .music-result {
+	margin: 7%;
+	background-color: white;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	
+	overflow: hidden;
+}	
+
+.recipe-label, .music-label {
+	padding: 10px;
+	margin: auto;
+}
 

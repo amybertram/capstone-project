@@ -15,39 +15,53 @@
 </head>
 <body>
 	<header>
-		<h1>Preheat.ly</h1>
+		<div class="row">
+			<div class="col-12">
+				<h1>Preheat.ly</h1>
+			</div>
+		</div>	
 	</header>
 	<main>
 		<!-- Welcome Page -->
 		<div class="welcome-page">
-			<h2 class="search-description">Search a holiday, theme, or event, and we’ll find you the best recipes to make while listening to the perfect tunes.</h2>
-			<form action="#">
-				<input type="text" id="js-query" name="search-term" class="search-text" placeholder="i.e. Halloween" required>
-				<button type="submit" class="search-button">Search</button>
-			</form>
+			<div class="row">
+				<div class="col-12">
+					<h2 class="search-description">Search a holiday, theme, or event, and we’ll find you the best recipes to make while listening to the perfect tunes.</h2>
+					<form action="#">
+						<input type="text" id="js-query" name="search-term" class="search-text" placeholder="i.e. Halloween" required>
+						<button type="submit" class="search-button">Search</button>
+					</form>
+				</div>
+			</div>		
 		</div>
 
 		<!-- Search Results -->
 		<div class="search-results hidden">
-			<!-- Start a new search 
-			<button class="search-again">Start Over</button> -->
-			<div class="recipe-section">
-				<h3>Recipes</h3>
-				<!-- Recipe results from Edamam API rendered in JS file -->
-				<div class="js-recipe-results">
+			<div class="row">
+				<div class="col-6">
+					<!-- Start a new search 
+					<button class="search-again">Start Over</button> -->
+					<div class="recipe-section">
+						<h3>Recipes</h3>
+						<!-- Recipe results from Edamam API rendered in JS file -->
+						<div class="js-recipe-results">
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="playlist-section">
-				<h3>Playlists</h3>
-				<!-- Playlist results from Spotify API rendered in JS file -->
-				<div class="js-playlist-results">
+				
+				<div class="col-6">	
+					<div class="playlist-section">
+						<h3>Music</h3>
+						<!-- Playlist results from Spotify API rendered in JS file -->
+						<div class="js-playlist-results">
+						</div>
+					</div>
 				</div>
-			</div>
-			
+			</div>	
 		</div>
 
 		<!-- Selection Details -->
-		<div class="selection-page">
+		<div class="selection-page hidden">
 			
 		</div>
 	</main>

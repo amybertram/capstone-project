@@ -10,24 +10,20 @@ function getDataFromRecipeApi(searchTerm, callback) {
     app_id: '58a559c5',
     q: searchTerm,
     from: 0,
-    to: 20
+    to: 15
   }
   $.getJSON(edamamURL, query, callback);
 }
 
-function getDataFromSpotifyApi(searchTerm, callback) {
-  var authURL = 'https://accounts.spotify.com/authorize';
-  var spotifyURL = 'https://api.spotify.com/v1/search?type=playlist';
-  var header = {
-    client_id: 'b8220b60db40488f90c40aec46f8b63f',
-    response_type: 'token',
-    redirect_uri: spotifyURL
-  }
+function getDataFromYoutubeApi(searchTerm, callback) {
+  var youtubeURL = 'https://www.googleapis.com/youtube/v3/search';
   var query = {
-    type: 'playlist',
-    q: searchTerm
+    part: 'snippet',
+    key:'AIzaSyBKraYE20XvQW71WAVGhFnmOqEOYFfvQDc',
+    q: searchTerm + "music",
+    maxResults: 15,
   }
-  $.getJSON(spotifyURL, query, callback);
+  $.getJSON(youtubeURL, query, callback);
 }
 
 function displayRecipeResults(data){
@@ -37,9 +33,9 @@ function displayRecipeResults(data){
   $('.js-recipe-results').html(results);
 }
 
-function displaySpotifyResults(data){
-  var results = data.tracks.map(function(item, index) {
-    return renderSpotifyResult(item);
+function displayPlaylistResults(data){
+  var results = data.items.map(function(item, index) {
+    return renderPlaylistResult(item);
   });
   $('.js-playlist-results').html(results);
 }
@@ -48,17 +44,30 @@ function displaySpotifyResults(data){
 //Render Functions
 function renderRecipeResult(result) {
   var resultHTML =  
-    `<h4>${result.recipe.label}</h4>
-    <a href="${result.recipe.url}" target="_blank"> <img src="${result.recipe.image}" alt="${result.recipe.label}"> </a>`
+    `<div class="recipe-result">
+      <h4 class="recipe-label">${result.recipe.label}</h4>
+      <img src="${result.recipe.image}" alt="${result.recipe.label}" class="js-recipe-selection">
+      <div class="selected-recipe hidden">
+        <p>Yield: ${result.recipe.yield}</p>
+        <button><a href="${result.recipe.url}" target="_blank">View Full Recipe</a></button>
+      </div>
+    </div>`
+    // <div class="selected-recipe">
+    //   <p>${result.recipe.ingredients.food}</p>
+    // </div>`
   return resultHTML; 
 }
 
-function renderSpotifyResult(result) {
+
+function renderPlaylistResult(result) {
   var resultHTML =  
-    `<h4>${result.images}</h4>`
+    `<div class="music-result" data-video-id=${result.id.videoId}>
+      <h4 class="music-label">${result.snippet.title}</h4>
+      <img src="${result.snippet.thumbnails.medium.url}" class="js-music-selection">
+    </div>`
   return resultHTML; 
 }
-
+//<a href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank"></a>
 
 //Event Listeners
 function watchSearch() {
@@ -70,8 +79,31 @@ function watchSearch() {
     $('.welcome-page').addClass("hidden");
     $('.search-results').removeClass("hidden");
     getDataFromRecipeApi(state.query, displayRecipeResults);
-    getDataFromRecipeApi(state.query, displaySpotifyResults);
+    getDataFromYoutubeApi(state.query, displayPlaylistResults);
   });
+
+  // SHOW RECIPE DETAILS AND HYPERLINK ON CLICK
+  $('.js-recipe-results').on("click", '.js-recipe-selection', function(event){
+    $(this).addClass("hidden")
+    $('.selected-recipe').removeClass("hidden")
+  });
+
+  // EMBED MUSIC SELECTION ON CLICK
+  $('.js-playlist-results').on("click", '.music-result', function(event){
+    //$(this).addClass("js-flip")
+    var videoId = $(this).attr("data-video-id");
+    console.log(videoId)
+    $(this).html(`
+       <iframe 
+         width="392" 
+         height="220.5" 
+         src="https://www.youtube.com/embed/${videoId}" 
+         frameborder="0" 
+         allowfullscreen>
+      </iframe>`)
+  });
+
+  //When Click on Banner, go back to home page, everything else hides
 }
   
 
