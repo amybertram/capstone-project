@@ -30,25 +30,38 @@ function displayRecipeResults(data){
   var results = data.hits.map(function(item, index) {
     return renderRecipeResult(item);
   });
-  $('.js-recipe-results').html(results);
+  if (results.length) {
+    $('.js-recipe-results').html(results)
+  } else {
+    $('.js-recipe-results').html(`<p>No results found</p>`)
+  }
 }
 
 function displayPlaylistResults(data){
   var results = data.items.map(function(item, index) {
     return renderPlaylistResult(item);
   });
-  $('.js-playlist-results').html(results);
+  if (results.length) {
+    $('.js-playlist-results').html(results)
+  } else {
+    $('.js-playlist-results').html(`<p>No results found</p>`)
+  }
 }
 
 
 //Render Functions
 function renderRecipeResult(result) {
+  console.log(result.recipe.ingredients)
+  var ingredientList = result.recipe.ingredients.map(function(ingredient) {
+    return `<li> ${ingredient.text} </li>`;
+  })
   var resultHTML =  
     `<div class="recipe-result">
       <h4 class="recipe-label">${result.recipe.label}</h4>
       <img src="${result.recipe.image}" alt="${result.recipe.label}" class="js-recipe-selection">
       <div class="selected-recipe hidden">
         <p>Yield: ${result.recipe.yield}</p>
+        <ul> ${ingredientList} </ul>
         <button class="search-button"><a href="${result.recipe.url}" target="_blank">View Full Recipe</a></button>
       </div>
     </div>`
@@ -85,7 +98,8 @@ function watchSearch() {
   // SHOW RECIPE DETAILS AND HYPERLINK ON CLICK
   $('.js-recipe-results').on("click", '.js-recipe-selection', function(event){
     $(this).addClass("hidden")
-    $('.selected-recipe').removeClass("hidden")
+    console.log($(this));
+    $(this).siblings(".selected-recipe").removeClass("hidden")
   });
 
   // EMBED MUSIC SELECTION ON CLICK
@@ -104,6 +118,9 @@ function watchSearch() {
   });
 
   //When Click on Banner, go back to home page, everything else hides
+  $('.js-header').click(function(event) {
+    location.reload()
+  })
 }
   
 
