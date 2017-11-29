@@ -49,7 +49,7 @@ function renderRecipeResult(result) {
       <img src="${result.recipe.image}" alt="${result.recipe.label}" class="js-recipe-selection">
       <div class="selected-recipe hidden">
         <p>Yield: ${result.recipe.yield}</p>
-        <button><a href="${result.recipe.url}" target="_blank">View Full Recipe</a></button>
+        <button class="search-button"><a href="${result.recipe.url}" target="_blank">View Full Recipe</a></button>
       </div>
     </div>`
     // <div class="selected-recipe">
